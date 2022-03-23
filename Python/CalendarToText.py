@@ -32,6 +32,5 @@ with open(file_name, 'w') as f:
 		fromtimestamp(event.when["start_time"]).strftime('%H:%M:%S')
 		end_time = datetime.datetime. \
 		fromtimestamp(event.when["end_time"]).strftime('%H:%M:%S')
-		
 		f.write("{} {} {} \n\n".format(start_time, end_time, event.title))
 	f.write("--------")
