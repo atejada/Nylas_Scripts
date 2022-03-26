@@ -24,6 +24,7 @@ events = nylas.events.where(calendar_id = os.environ.get("CALENDAR_ID"),
                             starts_after=AFTER, ends_before=BEFORE)
 
 with open(file_name, 'w') as f:
+	count = 0
 	f.write("# {}\n\n".format(today.strftime('%d %b %Y')))
 	f.write("--------\n\n")
 	f.write("## Events:\n\n")
@@ -33,4 +34,6 @@ with open(file_name, 'w') as f:
 		end_time = datetime.datetime. \
 		fromtimestamp(event.when["end_time"]).strftime('%H:%M:%S')
 		f.write("{} {} {} \n\n".format(start_time, end_time, event.title))
+	if count == 0:
+		f.write("No events today \U0001F60E \n\n")		
 	f.write("--------")
